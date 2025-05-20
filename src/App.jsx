@@ -1,3 +1,4 @@
+import Homepage from "./pages/Homepage"
 
 
 function App() {
@@ -5,7 +6,7 @@ function App() {
 
   return (
     <>
-      <h1>HELLO</h1>
+      <Homepage />
     </>
   )
 }
