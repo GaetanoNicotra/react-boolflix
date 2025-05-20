@@ -27,7 +27,7 @@ const Homepage = () => {
                 <div className="row text-center p-4">
                     <div className="col-12 d-flex ">
                         <input className='form-control me-4' type="text" placeholder='Cerca..' value={searchMovie} onChange={(e) => { setSearchMovie(e.target.value) }} />
-                        <button className='btn btn-primary' onClick={showMovies}>Search</button>
+                        <button className='btn btn-danger' onClick={showMovies}>Search</button>
                     </div>
                 </div>
             </header>
@@ -35,19 +35,18 @@ const Homepage = () => {
             <div className="container">
 
                 <div className="row">
-                    <h2 className='mt-4 mb-4'>FILM</h2>
+                    <h2 className='mt-4 mb-5'>FILM</h2>
                     {filteredMovie.map((film) => {
                         return (
                             <div key={film.id} className="col-4">
                                 <div className="card">
-                                    <img src={`https://image.tmdb.org/t/p/w342${film.backdrop_path}`} className="card-img-top" alt="..." />
+                                    <img src={`https://image.tmdb.org/t/p/w342${film.poster_path}`} className="card-img-top" alt="..." />
                                     <div className="card-body">
                                         <h5 className="card-title">{film.title}</h5>
-                                        <p className="card-text">Some quick example text to build on the card title and make up the bulk of the card’s content.</p>
+                                        <p className="card-text"><em><strong>Overview</strong></em><br />{film.overview}</p>
                                     </div>
                                     <ul className="list-group list-group-flush">
                                         <li className="list-group-item"><p><em><strong>Titolo originale</strong></em></p>{film.original_title}</li>
-                                        <li className="list-group-item"><p><em><strong>Overview</strong></em></p>{film.overview}</li>
                                         <li className="list-group-item"><p><em><strong>Lingua</strong></em></p>{film.original_language}</li>
                                         <li className="list-group-item"><p><em><strong>Vote</strong></em></p>{film.vote_average}</li>
                                     </ul>
@@ -57,19 +56,18 @@ const Homepage = () => {
                     })}
                 </div>
                 <div className="row">
-                    <h2 className='mt-4 mb-4'>SERIE TV</h2>
+                    <h2 className='mt-4 mb-5'>SERIE TV</h2>
                     {searchSeries.map((serie) => {
                         return (
                             <div key={serie.id} className="col-4">
                                 <div className="card">
-                                    <img src={`https://image.tmdb.org/t/p/w342${serie.backdrop_path}`} className="card-img-top" alt="..." />
+                                    <img src={`https://image.tmdb.org/t/p/w342${serie.poster_path}`} className="card-img-top" alt="..." />
                                     <div className="card-body">
                                         <h5 className="card-title">{serie.name}</h5>
-                                        <p className="card-text">Some quick example text to build on the card title and make up the bulk of the card’s content.</p>
+                                        <p className="card-text"><em><strong>Overview</strong></em><br />{serie.overview}</p>
                                     </div>
                                     <ul className="list-group list-group-flush">
                                         <li className="list-group-item"><p><em><strong>Titolo originale</strong></em></p>{serie.name}</li>
-                                        <li className="list-group-item"><p><em><strong>Overview</strong></em></p>{serie.overview}</li>
                                         <li className="list-group-item"><p><em><strong>Lingua</strong></em></p>{serie.original_language}</li>
                                         <li className="list-group-item"><p><em><strong>Vote</strong></em></p>{serie.vote_average}</li>
                                     </ul>
