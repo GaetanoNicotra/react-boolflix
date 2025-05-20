@@ -1,10 +1,19 @@
+body {
+    background-color: rgba(0, 0, 0, 0.950);
+}
+
 header {
-    background-color: rgba(0, 0, 0, 0.836);
+    background-color: rgba(255, 21, 21, 0.767);
     display: flex;
     justify-content: space-around;
     align-items: center;
 }
 
 h1 {
-    color: red;
+    color: rgb(255, 255, 255);
+}
+
+h2 {
+    color: white;
+    font-size: 50px;
 }
