@@ -22,15 +22,20 @@ const Homepage = () => {
 
     return (
         <>
-            <div className="container">
-                <div className="row text-center mt-4">
-                    <div className="col-12">
-                        <input type="text" placeholder='Cerca..' value={searchMovie} onChange={(e) => { setSearchMovie(e.target.value) }} />
+            <header>
+                <h1>BOOLFLIX</h1>
+                <div className="row text-center p-4">
+                    <div className="col-12 d-flex ">
+                        <input className='form-control me-4' type="text" placeholder='Cerca..' value={searchMovie} onChange={(e) => { setSearchMovie(e.target.value) }} />
                         <button className='btn btn-primary' onClick={showMovies}>Search</button>
                     </div>
                 </div>
+            </header>
+
+            <div className="container">
+
                 <div className="row">
-                    <h2>FILM</h2>
+                    <h2 className='mt-4 mb-4'>FILM</h2>
                     {filteredMovie.map((film) => {
                         return (
                             <div key={film.id} className="col-4">
@@ -52,7 +57,7 @@ const Homepage = () => {
                     })}
                 </div>
                 <div className="row">
-                    <h2>SERIE TV</h2>
+                    <h2 className='mt-4 mb-4'>SERIE TV</h2>
                     {searchSeries.map((serie) => {
                         return (
                             <div key={serie.id} className="col-4">
