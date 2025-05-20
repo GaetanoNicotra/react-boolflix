@@ -42,15 +42,17 @@ const Homepage = () => {
                                 <div className="card h-100">
                                     <img src={`https://image.tmdb.org/t/p/w342${film.poster_path}`} className="card-img-top" alt="..." />
                                     <hr />
-                                    <div className="card-body">
-                                        <h5 className="card-title">{film.title}</h5>
-                                        {/* <p className="card-text"><em><strong>Overview</strong></em><br />{film.overview}</p> */}
+                                    <div className="info">
+                                        <div className="card-body">
+                                            <h5 className="card-title">{film.title}</h5>
+                                            {/* <p className="card-text"><em><strong>Overview</strong></em><br />{film.overview}</p> */}
+                                        </div>
+                                        <ul className="list-group list-group-flush">
+                                            <li className="list-group-item"><p><em><strong>Titolo originale</strong></em></p>{film.original_title}</li>
+                                            <li className="list-group-item"><p><em><strong>Lingua</strong></em></p>{film.original_language}</li>
+                                            <li className="list-group-item"><p><em><strong>Vote</strong></em></p>{Math.round(film.vote_average / 2)}</li>
+                                        </ul>
                                     </div>
-                                    <ul className="list-group list-group-flush">
-                                        <li className="list-group-item"><p><em><strong>Titolo originale</strong></em></p>{film.original_title}</li>
-                                        <li className="list-group-item"><p><em><strong>Lingua</strong></em></p>{film.original_language}</li>
-                                        <li className="list-group-item"><p><em><strong>Vote</strong></em></p>{Math.round(film.vote_average / 2)}</li>
-                                    </ul>
                                 </div>
                             </div>
                         )
