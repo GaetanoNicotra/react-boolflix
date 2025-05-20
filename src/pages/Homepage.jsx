@@ -25,20 +25,25 @@ const Homepage = () => {
                     </div>
                 </div>
                 <div className="row">
-                    <div className="col-12">
-                        {filteredMovie.map((film) => {
-                            return (
-                                <div className="col-4" key={film.id}>
-                                    <div className="card">
-                                        <div className="card-body">
-                                            <h5>{film.title}</h5>
-                                            <p>{film.overview}</p>
-                                        </div>
+                    {filteredMovie.map((film) => {
+                        return (
+                            <div key={film.id} className="col-4">
+                                <div className="card">
+                                    <img src={`https://image.tmdb.org/t/p/w342${film.backdrop_path}`} className="card-img-top" alt="..." />
+                                    <div className="card-body">
+                                        <h5 className="card-title">{film.title}</h5>
+                                        <p className="card-text">Some quick example text to build on the card title and make up the bulk of the card’s content.</p>
                                     </div>
+                                    <ul className="list-group list-group-flush">
+                                        <li className="list-group-item"><p><em><strong>Titolo originale</strong></em></p>{film.original_title}</li>
+                                        <li className="list-group-item"><p><em><strong>Overview</strong></em></p>{film.overview}</li>
+                                        <li className="list-group-item"><p><em><strong>Lingua</strong></em></p>{film.original_language}</li>
+                                        <li className="list-group-item"><p><em><strong>Vote</strong></em></p>{film.vote_average}</li>
+                                    </ul>
                                 </div>
-                            )
-                        })}
-                    </div>
+                            </div>
+                        )
+                    })}
                 </div>
             </div>
         </>
@@ -46,3 +51,5 @@ const Homepage = () => {
 }
 
 export default Homepage;
+
+
