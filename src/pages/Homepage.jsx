@@ -55,51 +55,55 @@ const Homepage = () => {
                     </div>
                 </div>
             </header>
-
-            <div className="container">
-                <div className="row">
-                    <h2 className='mt-4 mb-5'>FILM</h2>
-                    {filteredMovie.map((film) => {
-                        return (
-                            <div key={film.id} className="col-4 mb-4">
-                                <div className="card h-100">
-                                    <img src={`https://image.tmdb.org/t/p/w342${film.poster_path}`} className="card-img-top" alt="..." />
-                                    <div className="info">
-                                        <ul className="list-group list-group-flush">
-                                            <li className="list-group-item text-bg-dark"><h5>{film.title}</h5></li>
-                                            <li className="list-group-item text-bg-dark"><p><em><strong>Overview</strong></em><br />{film.overview}</p></li>
-                                            <li className="list-group-item text-bg-dark"><p><em><strong>Titolo originale</strong></em></p>{film.original_title}</li>
-                                            <li className="list-group-item text-bg-dark"><p><em><strong>Lingua</strong></em></p><ReactCountryFlag countryCode={flags(film.original_language)} svg /> </li>
-                                            <li className="list-group-item text-bg-dark"><p><em><strong>Vote</strong></em></p>{Math.round(film.vote_average / 2)}</li>
-                                        </ul>
+            {(searchMovie === "", filteredMovie.length === 0) ?
+                <div className="container">
+                    <div className='text-white mt-5 title-start'>Benvenuto, cerca cio che preferisci!</div>
+                </div>
+                :
+                <div className="container">
+                    <div className="row">
+                        <h2 className='mt-4 mb-5'>FILM</h2>
+                        {filteredMovie.map((film) => {
+                            return (
+                                <div key={film.id} className="col-4 mb-4">
+                                    <div className="card h-100">
+                                        <img src={`https://image.tmdb.org/t/p/w342${film.poster_path}`} className="card-img-top" alt="..." />
+                                        <div className="info">
+                                            <ul className="list-group list-group-flush">
+                                                <li className="list-group-item text-bg-dark"><h5>{film.title}</h5></li>
+                                                <li className="list-group-item text-bg-dark"><p><em><strong>Overview</strong></em><br />{film.overview}</p></li>
+                                                <li className="list-group-item text-bg-dark"><p><em><strong>Titolo originale</strong></em></p>{film.original_title}</li>
+                                                <li className="list-group-item text-bg-dark"><p><em><strong>Lingua</strong></em></p><ReactCountryFlag countryCode={flags(film.original_language)} svg /> </li>
+                                                <li className="list-group-item text-bg-dark"><p><em><strong>Vote</strong></em></p>{Math.round(film.vote_average / 2)}</li>
+                                            </ul>
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
-                        )
-                    })}
-                </div>
-                <div className="row">
-                    <h2 className='mt-4 mb-5'>SERIE TV</h2>
-                    {searchSeries.map((serie) => {
-                        return (
-                            <div key={serie.id} className="col-4 mb-4">
-                                <div className="card h-100">
-                                    <img src={`https://image.tmdb.org/t/p/w342${serie.poster_path}`} className="card-img-top" alt="..." />
-                                    <div className="info">
-                                        <ul className="list-group list-group-flush">
-                                            <li className="list-group-item text-bg-dark"> <h5>{serie.name}</h5></li>
-                                            <li className="list-group-item text-bg-dark"> <p><em><strong>Overview</strong></em><br />{serie.overview}</p></li>
-                                            <li className="list-group-item text-bg-dark"><p><em><strong>Titolo originale</strong></em></p>{serie.name}</li>
-                                            <li className="list-group-item text-bg-dark"><p><em><strong>Lingua</strong></em></p><ReactCountryFlag countryCode={flags(serie.original_language)} svg /> </li>
-                                            <li className="list-group-item text-bg-dark"><p><em><strong>Vote</strong></em></p>{Math.round(serie.vote_average / 2)}</li>
-                                        </ul>
+                            )
+                        })}
+                    </div>
+                    <div className="row">
+                        <h2 className='mt-4 mb-5'>SERIE TV</h2>
+                        {searchSeries.map((serie) => {
+                            return (
+                                <div key={serie.id} className="col-4 mb-4">
+                                    <div className="card h-100">
+                                        <img src={`https://image.tmdb.org/t/p/w342${serie.poster_path}`} className="card-img-top" alt="..." />
+                                        <div className="info">
+                                            <ul className="list-group list-group-flush">
+                                                <li className="list-group-item text-bg-dark"> <h5>{serie.name}</h5></li>
+                                                <li className="list-group-item text-bg-dark"> <p><em><strong>Overview</strong></em><br />{serie.overview}</p></li>
+                                                <li className="list-group-item text-bg-dark"><p><em><strong>Titolo originale</strong></em></p>{serie.name}</li>
+                                                <li className="list-group-item text-bg-dark"><p><em><strong>Lingua</strong></em></p><ReactCountryFlag countryCode={flags(serie.original_language)} svg /> </li>
+                                                <li className="list-group-item text-bg-dark"><p><em><strong>Vote</strong></em></p>{Math.round(serie.vote_average / 2)}</li>
+                                            </ul>
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
-                        )
-                    })}
-                </div>
-            </div>
+                            )
+                        })}
+                    </div>
+                </div>}
         </>
     )
 }
