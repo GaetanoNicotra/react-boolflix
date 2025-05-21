@@ -18,17 +18,18 @@ h2 {
     font-size: 50px;
 }
 
-/* 
+
 .info {
     opacity: 0;
     visibility: hidden;
+    height: 0px;
 }
 
 
 .card:hover .info {
     opacity: 1;
-    cursor: pointer;
     visibility: visible;
     position: relative;
     bottom: 600px;
-} */
+    color: white;
+}

@@ -1,14 +1,13 @@
 import axios from 'axios';
 import { useState } from 'react';
 import ReactCountryFlag from 'react-country-flag';
-import ReactFlagsSelect from 'react-flags-select';
 
 const Homepage = () => {
     const [searchMovie, setSearchMovie] = useState("");
     const [filteredMovie, setFilteredMovie] = useState([]);
     const [searchSeries, setSearchSeries] = useState([]);
 
-    // definizione funzione per le bandiere
+    // definizione funzione per mostrare le bandiere al posto della lingua
     const flags = (code) => {
         const flag = {
             en: 'GB',
@@ -26,6 +25,11 @@ const Homepage = () => {
         return flag[code];
     }
 
+
+    // definizione funzione per mostrare le stelline
+    const stars = () => {
+
+    }
 
     // funzione che mostra i film tramite chiamate ajax
     const showMovies = () => {
@@ -60,16 +64,13 @@ const Homepage = () => {
                             <div key={film.id} className="col-4 mb-4">
                                 <div className="card h-100">
                                     <img src={`https://image.tmdb.org/t/p/w342${film.poster_path}`} className="card-img-top" alt="..." />
-                                    <hr />
                                     <div className="info">
-                                        <div className="card-body">
-                                            <h5 className="card-title">{film.title}</h5>
-                                            {/* <p className="card-text"><em><strong>Overview</strong></em><br />{film.overview}</p> */}
-                                        </div>
                                         <ul className="list-group list-group-flush">
-                                            <li className="list-group-item"><p><em><strong>Titolo originale</strong></em></p>{film.original_title}</li>
-                                            <li className="list-group-item"><p><em><strong>Lingua</strong></em></p><ReactCountryFlag countryCode={flags(film.original_language)} svg /> </li>
-                                            <li className="list-group-item"><p><em><strong>Vote</strong></em></p>{Math.round(film.vote_average / 2)}</li>
+                                            <li className="list-group-item text-bg-dark"><h5>{film.title}</h5></li>
+                                            <li className="list-group-item text-bg-dark"><p><em><strong>Overview</strong></em><br />{film.overview}</p></li>
+                                            <li className="list-group-item text-bg-dark"><p><em><strong>Titolo originale</strong></em></p>{film.original_title}</li>
+                                            <li className="list-group-item text-bg-dark"><p><em><strong>Lingua</strong></em></p><ReactCountryFlag countryCode={flags(film.original_language)} svg /> </li>
+                                            <li className="list-group-item text-bg-dark"><p><em><strong>Vote</strong></em></p>{Math.round(film.vote_average / 2)}</li>
                                         </ul>
                                     </div>
                                 </div>
@@ -84,18 +85,13 @@ const Homepage = () => {
                             <div key={serie.id} className="col-4 mb-4">
                                 <div className="card h-100">
                                     <img src={`https://image.tmdb.org/t/p/w342${serie.poster_path}`} className="card-img-top" alt="..." />
-                                    <hr />
                                     <div className="info">
-                                        <div className="card-body">
-                                            <h5 className="card-title">{serie.name}</h5>
-                                            {/* <p className="card-text"><em><strong>Overview</strong></em><br />{serie.overview}</p> */}
-                                        </div>
                                         <ul className="list-group list-group-flush">
-                                            <li className="list-group-item"><p><em><strong>Titolo originale</strong></em></p>{serie.name}</li>
-                                            <li className="list-group-item"><p><em><strong>Lingua</strong></em></p><ReactCountryFlag countryCode={flags(serie.original_language)} svg /> </li>
-                                            <li className="list-group-item"><p><em><strong>Vote</strong></em></p>{Math.round(serie.vote_average / 2)}
-                                                {Math.round(serie.vote_average / 2) === 4 && <i className="fa-solid fa-star"></i>}
-                                            </li>
+                                            <li className="list-group-item text-bg-dark"> <h5>{serie.name}</h5></li>
+                                            <li className="list-group-item text-bg-dark"> <p><em><strong>Overview</strong></em><br />{serie.overview}</p></li>
+                                            <li className="list-group-item text-bg-dark"><p><em><strong>Titolo originale</strong></em></p>{serie.name}</li>
+                                            <li className="list-group-item text-bg-dark"><p><em><strong>Lingua</strong></em></p><ReactCountryFlag countryCode={flags(serie.original_language)} svg /> </li>
+                                            <li className="list-group-item text-bg-dark"><p><em><strong>Vote</strong></em></p>{Math.round(serie.vote_average / 2)}</li>
                                         </ul>
                                     </div>
                                 </div>
