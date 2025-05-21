@@ -26,11 +26,12 @@ const Homepage = () => {
         return flag[code];
     }
 
-
-    // definizione funzione per mostrare le stelline
-    const stars = () => {
-
-    }
+    // //definizione funzione per mostrare le stelline
+    // const stars = () => {
+    //     const num = 5;
+    //     for (let i = 0; i = num; i++) {
+    //         <i key={i} class="fa-solid fa-star"></i>
+    //     }
 
     // funzione che mostra i film e le serie tv tramite chiamate ajax
     const showMovies = () => {
@@ -77,7 +78,9 @@ const Homepage = () => {
                                                 <li className="list-group-item text-bg-dark"><p><em><strong>Overview</strong></em><br />{film.overview}</p></li>
                                                 <li className="list-group-item text-bg-dark"><p><em><strong>Titolo originale</strong></em></p>{film.original_title}</li>
                                                 <li className="list-group-item text-bg-dark"><p><em><strong>Lingua</strong></em></p><ReactCountryFlag countryCode={flags(film.original_language)} svg /> </li>
-                                                <li className="list-group-item text-bg-dark"><p><em><strong>Vote</strong></em></p>{Math.round(film.vote_average / 2)}</li>
+                                                <li className="list-group-item text-bg-dark"><p><em><strong>Vote</strong></em></p>{Math.round(film.vote_average / 2)}
+                                                    { }
+                                                </li>
                                             </ul>
                                         </div>
                                     </div>
