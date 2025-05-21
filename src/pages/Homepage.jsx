@@ -78,9 +78,7 @@ const Homepage = () => {
                                                 <li className="list-group-item text-bg-dark"><p><em><strong>Overview</strong></em><br />{film.overview}</p></li>
                                                 <li className="list-group-item text-bg-dark"><p><em><strong>Titolo originale</strong></em></p>{film.original_title}</li>
                                                 <li className="list-group-item text-bg-dark"><p><em><strong>Lingua</strong></em></p><ReactCountryFlag countryCode={flags(film.original_language)} svg /> </li>
-                                                <li className="list-group-item text-bg-dark"><p><em><strong>Vote</strong></em></p>{Math.round(film.vote_average / 2)}
-                                                    { }
-                                                </li>
+                                                <li className="list-group-item text-bg-dark"><p><em><strong>Vote</strong></em></p>{Math.round(film.vote_average / 2)}</li>
                                             </ul>
                                         </div>
                                     </div>
