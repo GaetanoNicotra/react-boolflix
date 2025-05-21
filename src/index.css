@@ -18,6 +18,7 @@ h2 {
     font-size: 50px;
 }
 
+/* 
 .info {
     opacity: 0;
     visibility: hidden;
@@ -28,4 +29,6 @@ h2 {
     opacity: 1;
     cursor: pointer;
     visibility: visible;
-}
+    position: relative;
+    bottom: 600px;
+} */

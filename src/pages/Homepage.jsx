@@ -1,13 +1,33 @@
 import axios from 'axios';
 import { useState } from 'react';
-
+import ReactCountryFlag from 'react-country-flag';
+import ReactFlagsSelect from 'react-flags-select';
 
 const Homepage = () => {
     const [searchMovie, setSearchMovie] = useState("");
     const [filteredMovie, setFilteredMovie] = useState([]);
     const [searchSeries, setSearchSeries] = useState([]);
 
-    // funzione che mostra i film
+    // definizione funzione per le bandiere
+    const flags = (code) => {
+        const flag = {
+            en: 'GB',
+            it: 'IT',
+            fr: 'FR',
+            de: 'DE',
+            es: 'ES',
+            ja: 'JP',
+            zh: 'CN',
+            ko: 'KR',
+            ru: 'RU',
+            pt: 'PT',
+            hi: 'IN',
+        }
+        return flag[code];
+    }
+
+
+    // funzione che mostra i film tramite chiamate ajax
     const showMovies = () => {
         axios.get('https://api.themoviedb.org/3/search/movie?api_key=babf73305aa1b9cdda4286f732c56045&query=' + searchMovie).then((response) => {
             setFilteredMovie(response.data.results);
@@ -33,7 +53,6 @@ const Homepage = () => {
             </header>
 
             <div className="container">
-
                 <div className="row">
                     <h2 className='mt-4 mb-5'>FILM</h2>
                     {filteredMovie.map((film) => {
@@ -49,7 +68,7 @@ const Homepage = () => {
                                         </div>
                                         <ul className="list-group list-group-flush">
                                             <li className="list-group-item"><p><em><strong>Titolo originale</strong></em></p>{film.original_title}</li>
-                                            <li className="list-group-item"><p><em><strong>Lingua</strong></em></p>{film.original_language}</li>
+                                            <li className="list-group-item"><p><em><strong>Lingua</strong></em></p><ReactCountryFlag countryCode={flags(film.original_language)} svg /> </li>
                                             <li className="list-group-item"><p><em><strong>Vote</strong></em></p>{Math.round(film.vote_average / 2)}</li>
                                         </ul>
                                     </div>
@@ -73,14 +92,13 @@ const Homepage = () => {
                                         </div>
                                         <ul className="list-group list-group-flush">
                                             <li className="list-group-item"><p><em><strong>Titolo originale</strong></em></p>{serie.name}</li>
-                                            <li className="list-group-item"><p><em><strong>Lingua</strong></em></p>{serie.original_language}</li>
+                                            <li className="list-group-item"><p><em><strong>Lingua</strong></em></p><ReactCountryFlag countryCode={flags(serie.original_language)} svg /> </li>
                                             <li className="list-group-item"><p><em><strong>Vote</strong></em></p>{Math.round(serie.vote_average / 2)}
                                                 {Math.round(serie.vote_average / 2) === 4 && <i className="fa-solid fa-star"></i>}
                                             </li>
                                         </ul>
                                     </div>
                                 </div>
-
                             </div>
                         )
                     })}
