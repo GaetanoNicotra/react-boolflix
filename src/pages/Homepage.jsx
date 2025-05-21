@@ -3,11 +3,12 @@ import { useState } from 'react';
 import ReactCountryFlag from 'react-country-flag';
 
 const Homepage = () => {
+    // definizione variabili di stato
     const [searchMovie, setSearchMovie] = useState("");
     const [filteredMovie, setFilteredMovie] = useState([]);
     const [searchSeries, setSearchSeries] = useState([]);
 
-    // definizione funzione per mostrare le bandiere al posto della lingua
+    // definizione della funzione per mostrare le bandiere al posto della lingua
     const flags = (code) => {
         const flag = {
             en: 'GB',
@@ -31,7 +32,7 @@ const Homepage = () => {
 
     }
 
-    // funzione che mostra i film tramite chiamate ajax
+    // funzione che mostra i film e le serie tv tramite chiamate ajax
     const showMovies = () => {
         axios.get('https://api.themoviedb.org/3/search/movie?api_key=babf73305aa1b9cdda4286f732c56045&query=' + searchMovie).then((response) => {
             setFilteredMovie(response.data.results);
@@ -46,6 +47,7 @@ const Homepage = () => {
 
     return (
         <>
+            {/* HEADER */}
             <header>
                 <h1>BOOLFLIX</h1>
                 <div className="row text-center p-4">
@@ -55,6 +57,7 @@ const Homepage = () => {
                     </div>
                 </div>
             </header>
+            {/* SEZIONE PER LA GENERAZIONE DELLE CARD DEI FILM */}
             {(searchMovie === "", filteredMovie.length === 0) ?
                 <div className="container">
                     <div className='text-white mt-5 title-start'>Benvenuto, cerca cio che preferisci!</div>
@@ -82,6 +85,7 @@ const Homepage = () => {
                             )
                         })}
                     </div>
+                    {/* SEZIONE PER LA GENERAZIONE DELLE CARD DELLE SERIE TV */}
                     <div className="row">
                         <h2 className='mt-4 mb-5'>SERIE TV</h2>
                         {searchSeries.map((serie) => {
